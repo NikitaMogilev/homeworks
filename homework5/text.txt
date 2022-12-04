@@ -1,0 +1,3 @@
+The CPython interpreter scans NN
+CPython imNplementation detail: O
+nnnN
