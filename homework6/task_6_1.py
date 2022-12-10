@@ -1,15 +1,17 @@
 from math import hypot
-from itertools import combinations
 
 
-def distance(p1, p2):
-    """Euclidean distance between two points."""
-    x1, y1 = p1
-    x2, y2 = p2
-    return hypot(x2 - x1, y2 - y1)
+def distance(*args):
+    sum_of_distance = 0
+    for index, points in enumerate(args):
+        if index == len(args)-1:
+            break
+        x1, y1 = points
+        x2, y2 = args[index+1]
+        lengh = hypot(x2 - x1, y2 - y1)
+        sum_of_distance += lengh
+    return sum_of_distance
 
 
-list_of_points = [(1, 2), (3, 4), (5, 6), (7, 8), (9, 10), (11, 12), (65, 52)]
-
-result = sum([distance(*combo) for combo in combinations(list_of_points, 2)])
+result = round(distance((1, 1), (1, 2), (2, 2), (3, 3)), 2)
 print(result)
