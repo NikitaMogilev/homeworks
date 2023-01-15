@@ -13,7 +13,7 @@ class User:
 
     @property
     def info(self):
-        return print({'Name': self.name, 'Nickname': self.nickname, 'Age': self.age, 'Eyes_color': self.eye})
+        return {'Name': self.name, 'Nickname': self.nickname, 'Age': self.age, 'Eyes_color': self.eye}
 
     def __eq__(self, other):
         return self.age == other.age
@@ -26,18 +26,22 @@ class User:
 
 
 def users_generator(number):
-    num = 0
+    num = 1
     while num <= number:
         name = random.choice(AVAILABLE_NAMES)
         nickname = name + str(random.randrange(10000, 100000))
         age = random.randrange(1, 100)
         eye = random.choice(AVAILABLE_COLORS)
-        user = {'Name': name, 'Nickname': nickname, 'Age': age, 'Eyes_color': eye}
+        user = name, nickname, age, eye
         yield user
         num += 1
         continue
+    
 
 
-users = users_generator(1000000)
-for user in users:
-    print(user)
+gen = users_generator(3)
+for name, nickname, age, eye in gen:
+    user = User(name, nickname, age, eye)
+    print(user.info)
+    print(type(user))
+
