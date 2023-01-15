@@ -36,7 +36,6 @@ def users_generator(number):
         yield user
         num += 1
         continue
-    
 
 
 gen = users_generator(3)
@@ -44,4 +43,3 @@ for name, nickname, age, eye in gen:
     user = User(name, nickname, age, eye)
     print(user.info)
     print(type(user))
-
